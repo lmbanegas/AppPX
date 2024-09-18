@@ -19,13 +19,13 @@
   >
     <label for="px">Paciente:</label>
     <select id="px" name="px" required>
-      <option value="" disabled selected >Seleccionar</option>
-      <option value="Cigarrillos">Px 1</option>
-      <option value="Analgesicos">Px 2</option>
-      <option value="Encendedores">Px 3</option>
-      <option value="Pegamentos">Px 4</option>
-      <option value="Pilas">Px 4</option>
+      <% resultados.forEach(paciente => { %>
+        <option value="<%= paciente.id %>">
+          <%= paciente.nombre %> - <%= paciente.apellido %>
+        </option>
+      <% }); %>
     </select>
+    
 
 
     <label id="fecha" for="fecha">Fecha de consulta:</label>

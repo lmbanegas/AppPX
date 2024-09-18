@@ -106,18 +106,24 @@ const detail = async (req, res) => {
   }
 };
 
-const addProduct = (req, res) => {
-  res.render('productAdd');
+const addProduct = async (req, res) => {
+
+  const resultado = "SELECT * FROM public.pacientes";
+  const resultados = await pool.query(resultado);
+  
+  console.log('Consulta exitosa. Resultados:', resultados.rows);
+      
+
+  res.render('productAdd', {resultados: resultados.rows});
 };
 
 const addProductPost = async (req, res) => {
   try {
-    const { name, price, category } = req.body;
+    const { px, fecha, comentario } = req.body;
 
-    // Insertar el nuevo producto en la base de datos
 
-    const query = 'INSERT INTO public.articulos (name, price, CATEGORY) VALUES ($1, $2, $3) RETURNING *';
-    const result = await pool.query(query, [name, price, category]);
+    const query = 'INSERT INTO public.historiaPX (idpaciente, fecha, comentario) VALUES ($1, $2, $3) RETURNING *';
+    const result = await pool.query(query, [px, fecha, comentario]);
 
     // Redirigir a la página de detalles del nuevo producto
     res.redirect(`/pacientes/`);
@@ -231,12 +237,10 @@ const nuevoPaciente = (req, res) => {
 
 const nuevoPacientePost = async (req, res) => {
   try {
-    const { name, price, category } = req.body;
+    const { nombre, apellido, telefono } = req.body;
 
-    // Insertar el nuevo producto en la base de datos
-
-    const query = 'INSERT INTO public.articulos (name, price, CATEGORY) VALUES ($1, $2, $3) RETURNING *';
-    const result = await pool.query(query, [name, price, category]);
+    const query = 'INSERT INTO public.pacientes (nombre, apellido, telefono) VALUES ($1, $2, $3) RETURNING *';
+    const result = await pool.query(query, [nombre, apellido, telefono]);
 
     // Redirigir a la página de detalles del nuevo producto
     res.redirect(`/pacientes/`);
