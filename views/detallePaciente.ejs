@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  <title>Historia Clínica</title>
+
+</head>
+
+<body>
+
+
+
+  <%- include('header') %>
+
+
+    <div id="pdfContent">
+
+
+      <h1>Historia Clínica:</h1>
+      <br>
+      <p>Nombre y Apellido: Lucas Banegas</p>
+      <p>DNI: 37.783.367</p>
+      <br>
+
+      <div class="entradaHC">
+        <p>Fecha: 04/09/2024</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
+          commodi doloremque, quasi ex, odio,
+          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
+      </div>
+      <br>
+      <br>
+      <div class="entradaHC">
+        <p>Fecha: 11/09/2024</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
+          commodi doloremque, quasi ex, odio,
+          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
+      </div>
+      <br>
+
+      <div class="entradaHC">
+        <p>Fecha: 18/09/2024</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
+          commodi doloremque, quasi ex, odio,
+          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
+      </div>
+
+
+      
+
+
+    </div>
+
+    <div>
+      <br><br><br>
+      <button class="print" onclick="imprimirPDF()">Imprimir historia</button>
+
+    </div>
+
+    <footer> © 2023 | Todos los derechos reservados </footer>
+
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
+<script>
+  function imprimirPDF() {
+
+
+    const element = document.getElementById("pdfContent");
+
+    html2pdf(element, {
+      margin: 10,
+      filename: 'pedido.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    });
+  }
+</script>
+
+</html>

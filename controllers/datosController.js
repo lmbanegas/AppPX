@@ -88,22 +88,26 @@ const allpacientes = async (req, res) => {
 
 const detail = async (req, res) => {
   try {
-    // Obtén el id de los parámetros de la URL
-    const id = req.params.id;
+    // // Obtén el id de los parámetros de la URL
+    // const id = req.params.id;
 
-    // Realiza la consulta SQL con una cláusula WHERE para filtrar por id
-    const query = 'SELECT * FROM public.articulos WHERE id = $1'
-    ;
-    const result = await pool.query(query, [id]);
+    // // Realiza la consulta SQL con una cláusula WHERE para filtrar por id
+    // const query = 'SELECT * FROM public.articulos WHERE id = $1'
+    // ;
+    // const result = await pool.query(query, [id]);
 
-    // Verifica si se encontró un resultado
-    if (result.rows.length > 0) {
-      const dato = result.rows[0];
-      res.render('productDetail', { dato });
-    } else {
-      // Si no se encuentra el dato, puedes manejarlo como desees
-      res.status(404).send('Dato no encontrado');
-    }
+    // // Verifica si se encontró un resultado
+    // if (result.rows.length > 0) {
+    //   const dato = result.rows[0];
+    //   res.render('productDetail', { dato });
+    // } else {
+    //   // Si no se encuentra el dato, puedes manejarlo como desees
+    //   res.status(404).send('Dato no encontrado');
+    // }
+
+    res.render('detallePaciente');
+
+
   } catch (error) {
     console.error('Error de consulta:', error.message);
     res.status(500).send('Error de consulta');

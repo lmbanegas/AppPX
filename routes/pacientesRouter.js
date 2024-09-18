@@ -12,7 +12,7 @@ router.get('/', datosController.allpacientes);
 
 
 //Detalle de paciente
-router.get('/detail/:id', datosController.detail);
+router.get('/detalle/:id', datosController.detail);
 
 //Añadir entrada de HC
 router.get('/add', datosController.nuevaEntrada);
