@@ -1,0 +1,37 @@
+<!-- views/agregarProducto.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  <title>Nuevo paciente</title>
+</head>
+<body>
+  <br>
+  <h1>Nuevo paciente</h1>
+  <br>
+  <div class="addProduct">
+
+
+  <form action="/pacientes/nuevo-paciente" method="post" autocomplete="off" class="nuevoPaciente">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre"><br><br>
+        
+        <label for="apellido">Apellido:</label><br>
+        <input type="text" id="apellido" name="apellido"><br><br>
+
+        <label for="telefono">Teléfono:</label><br>
+        <input type="text" id="telefono" name="telefono"><br><br>
+
+    <button class="last" type="submit">Añadir paciente</button>
+  </form>
+
+  </div>
+
+</body>
+
+</html>

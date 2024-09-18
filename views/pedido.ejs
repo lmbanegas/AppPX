@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/home.css">
+  <link rel="stylesheet" href="/print.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  <title>Detalles del Pedido</title>
+</head>
+<body>
+
+<div id="pdfContent">
+
+  <h2>Presupuesto - <%=diaFactura%></h2> 
+
+  <br>
+
+<article >
+  <table class="styled-table">
+    <thead>
+      <tr class="active-row">
+        <th>Cantidad</th>
+        <th>Detalle</th>
+        <th>Precio unitario</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% productosSeleccionados.forEach(producto => { %>
+        <tr>
+          <td><%= producto.cantidad %></td>
+          <td><%= producto.nombre %></td>
+          <td> $ <%= producto.precio %></td>
+          <td>$ <%= producto.precioTotal %></td>
+        </tr>
+      <% }) %>
+      <tr class="total">
+        <td colspan="3">Total</td>
+        <td>$ <%= totalCarrito.toFixed(2) %> </td>
+      </tr>
+    </tbody>
+  </table>
+  
+
+</div>
+
+  <button class="print" onclick="imprimirPDF()">Imprimir pedido</button>
+
+  
+  <br>
+<button class="print">
+  <a href="/">Volver</a>
+</button> 
+</article>
+
+
+</body>
+
+
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
+<script>
+  function imprimirPDF() {
+    const element = document.getElementById("pdfContent");
+
+    html2pdf(element, {
+      margin: 10,
+      filename: 'pedido.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    });
+  }
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+
+  <title>Resultados</title>
+</head>
+
+<body>
+
+  <%- include('header') %>
+
+
+  <article>
+    <h1>Todos los productos:</h1>
+    
+    <br>
+
+
+
+
+    <table class="styled-table">
+      <thead>
+        <tr class="active-row">
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Editar producto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% pacientes.forEach(pacientes=> { %>
+          <tr>
+            <td>
+              <%= pacientes.name %>
+            </td>
+            <td>$ <%= pacientes.price %>
+            </td>
+
+            <td><a href="/pacientes/edit/<%= pacientes.id %>" class="edit-link"><i class="far fa-edit"></i></a></td>
+          </tr>
+          <% }) %>
+      </tbody>
+    </table>
+
+    <button class="last">
+      <a href="/pacientes/add"> Agregar nuevo producto</a>
+    </button>
+
+  </article>
+
+
+  <%- include('footer') %>
+
+
+</body>
+
+</html>

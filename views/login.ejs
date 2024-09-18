@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./login.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  <title>Iniciar sesión</title>
+</head>
+
+<body>
+  <div class="form-container">
+    <p class="title">Bienvenido!</p>
+
+    <form class="form" action="/login" method="post">
+        <input type="text" id="username" name="username" class="input" placeholder="Usuario" value="<%= typeof formData !== 'undefined' ? formData.username : '' %>">
+        <p class="error-message"><%= typeof errors !== 'undefined' && errors.array().some(e => e.param === 'username') ? errors.array().find(e => e.param === 'username').msg : '' %></p>
+
+        <input type="password" id="password" name="password" class="input" placeholder="Contraseña" value="<%= typeof formData !== 'undefined' ? formData.password : '' %>">
+        <p class="error-message"><%= typeof errors !== 'undefined' && errors.array().some(e => e.param === 'password') ? errors.array().find(e => e.param === 'password').msg : '' %></p>
+
+        <!-- Mostrar mensaje de error general -->
+        <p class="error-message"><%= typeof errors !== 'undefined' && errors.array().some(e => e.param === 'general') ? errors.array().find(e => e.param === 'general').msg : '' %></p>
+
+        <br>
+        <button type="submit" class="form-btn">Log in</button>
+    </form>
+</div>
+  
+
+    
+</body>
+</html>
+
+

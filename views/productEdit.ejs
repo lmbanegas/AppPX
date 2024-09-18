@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEX/ndn+qBsB9v9Fq4Gx0R4+unBIdx5PbLb4" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+  <title>Editar Producto</title>
+
+</head>
+
+<body>
+  <%- include('header') %>
+
+
+    <article>
+
+      <button class="print">
+        <a href="/pacientes">Volver</a>
+      </button>
+
+      <br>
+      <h1>Editar Producto</h1>
+
+      <br>
+
+      <div class="addProduct">
+        <form action="/pacientes/edit/<%= producto.id %>" method="post">
+          <label for="name">Nuevo Nombre:</label>
+          <input type="text" id="name" name="name" value="<%= producto.name %>" required>
+
+          <label for="price">Nuevo Precio:</label>
+          <input type="text" id="price" name="price" value="<%= producto.price %>" required>
+
+          <label for="category">Nueva categoría:</label>
+          <select id="category" name="category" class="category" required>
+            <option value="<%= producto.category%>"selected> Sin cambios </option>
+            <option value="Cigarrillos">Cigarrillos</option>
+            <option value="Analgesicos">Analgesicos</option>
+            <option value="Encendedores">Encendedores</option>
+            <option value="Pegamentos">Pegamentos</option>
+            <option value="Pilas">Pilas</option>
+            <option value="Filos">Filos</option>
+            <option value="Preservativos">Preservativos</option>
+          </select>
+
+          </select>
+
+          <label for="aumento">Aplicar Aumento:</label>
+          <div class="edit">
+
+            <input type="number" id="aumento" name="aumento"> %
+          </div>
+          <br>
+          <button class="last" type="submit">Guardar Cambios</button>
+          <br>
+
+
+
+      </form>
+
+      <form action="/pacientes/edit/<%= producto.id%>/delete?_method=DELETE" method="POST">
+        <button class="last" style="background-color: #E23636" type="submit">Borrar</button>
+      </form>
+    </div>
+
+    </article>
+
+    <footer> © 2023 | Todos los derechos reservados </footer>
+
+</body>
+
+</html>

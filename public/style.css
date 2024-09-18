@@ -1,0 +1,78 @@
+/* Estilos base comunes a todas las pantallas */
+* {
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.addProduct form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px;
+}
+
+#nuevoPaciente{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4111px;
+}
+
+
+input {
+  width: 100%;
+  text-align: center;
+  height: 30px;
+
+}
+
+
+  select {
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  
+  }
+
+  .subtitle {
+    color: #1e1e1f;
+    background-color: #f5f5f5;
+  }
+
+
+  #comentario {
+    height: 440px;
+    width: 500px;
+
+  }
+
+
+
+/* Estilos específicos para pantallas grandes (PC) */
+@media only screen and (min-width: 200px) {
+  header {
+    padding: 1.1rem 5rem; /* Ajustado para pantallas más grandes */
+  }
+
+  .brand a {
+    font-size: 1.5rem; /* Ajusta según sea necesario */
+  }
+
+  li > a {
+    font-size: 1.2rem; /* Ajusta según sea necesario */
+  }
+}

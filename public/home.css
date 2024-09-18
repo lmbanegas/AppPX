@@ -1,0 +1,306 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    color: #1e1e1f;
+  }
+
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Alinear a la izquierda y derecha */
+    }
+    
+    .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    }
+    
+    .topnav a:hover {
+    background-color: #008066;
+    color: rgb(255, 255, 255);
+    }
+    
+    .topnav a.active {
+    color: white;
+    background-color: #009879;
+    font-weight: 500;
+
+    }
+    
+    @media screen and (max-width: 600px) {
+    .topnav {
+    flex-direction: column; /* Cambia la dirección del flujo en pantallas más pequeñas */
+    }
+    
+    .topnav a {
+    float: none; /* Elimina el float en pantallas más pequeñas */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    box-sizing: border-box;
+    }
+    }
+    
+  
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 100px; /* Ajusta el valor según sea necesario */
+    font-size: 18px;
+  }
+  
+  .product {
+    color: #1e1e1f;
+  }
+
+  .product td{
+    width: 15%;
+  }
+  
+  .product input {
+    width: 50px;
+    text-align: center;
+  }
+  
+  .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    width: 100%; /* Ajuste para ocupar toda la pantalla */
+  }
+  
+  .styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  .styled-table th,
+  .styled-table td {
+    padding: 12px 20px;
+    text-align: center;
+  }
+
+  .styled-table td a {
+    color: #1e1e1f;
+  }
+  
+  .styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  
+  .styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+  
+  button {
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #009879;
+    border-radius: 2px;
+    border-style: none;
+    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    letter-spacing: normal;
+    line-height: 1.5;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 25px;
+  }
+  
+  button:hover {
+    background-color: #008066;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+  }
+  
+  button:active {
+    transform: translateY(2px);
+    transition-duration: .35s;
+  }
+
+
+  
+  button.last {
+    width: 100%;
+    height: 40px;
+
+
+  }
+  
+  button.last a {
+    text-decoration: none;
+    color: white
+
+  }
+
+  button.print {
+    width: 50%;
+    height: 35px;
+
+  }
+
+  button.print a{
+    color: white;
+    text-decoration: none;
+  }
+
+  input {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  
+  }
+
+  .edit {
+    margin: 5px;
+  }
+  .edit input{
+
+    width: 50px;
+  }
+
+  .category {
+    text-align: center;
+  }
+  
+  input[type="number"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  .edit-link i.fa-pencil-alt {
+    margin-right: 5px; /* Añade un espacio entre el ícono y el texto (ajusta según sea necesario) */
+    color: #007bff; /* Cambia el color según tu preferencia */
+    font-size: 16px; /* Cambia el tamaño según tu preferencia */
+    /* Otros estilos según sea necesario */
+}
+
+  
+  @media only screen and (max-width: 600px) {
+    body {
+      font-size: 15px;
+    }
+  
+  
+    .styled-table th,
+    .styled-table td {
+      padding: 15px 6px;
+    }
+  }
+  
+  /* Footer Styles */
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #009879;
+    color: #ffffff;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 20px; /* Ajusta el valor según sea necesario */
+  }
+  
+  /* Header/Navbar Styles */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #009879;
+    color: #ffffff;
+    width: 100%; /* Ajuste para ocupar toda la pantalla */
+  }
+  
+  #nav-toggle {
+    display: none;
+  }
+  
+  nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #009879;
+  }
+  
+  nav a {
+    padding: 15px;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+  }
+  
+  #nav-toggle:checked + nav {
+    display: flex;
+  }
+  
+  .options {
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 450px) {
+    .topnav a {
+       width: 100%;
+    }
+ }
+
+ @media screen and (max-width: 450px) {
+  .topnav a {
+     display: none;
+  }
+
+  #myTopnav .options {
+     display: flex;
+     flex-direction: column;
+  }
+
+  #myTopnav .options a {
+     display: block;
+     width: 100%;
+  }
+}
+
+ 
+@media screen and (max-width: 450px) {
+  .topnav a {
+     font-size: 14px; /* Ajusta el tamaño según sea necesario */
+  }
+}
