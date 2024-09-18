@@ -11,13 +11,15 @@
   <title>Nuevo paciente</title>
 </head>
 <body>
-  <br>
+
+  <%- include('header') %>
+
+
+  <div class="contenedorFormNuevoPaciente">
   <h1>Nuevo paciente</h1>
-  <br>
-  <div class="addProduct">
 
-
-  <form action="/pacientes/nuevo-paciente" method="post" autocomplete="off" class="nuevoPaciente">
+   
+  <form action="/pacientes/nuevo-paciente" method="post" autocomplete="off" class="formNuevoPaciente">
         <label for="nombre">Nombre:</label><br>
         <input type="text" id="nombre" name="nombre"><br><br>
         
@@ -30,8 +32,7 @@
     <button class="last" type="submit">Añadir paciente</button>
   </form>
 
-  </div>
-
+</div>
 </body>
 
 </html>

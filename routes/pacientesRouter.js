@@ -7,16 +7,16 @@ const router = express.Router();
 router.use(userValidation);
 
 
-//Todos los paciente
+//Todos los pacientes
 router.get('/', datosController.allpacientes);
 
 
 //Detalle de paciente
 router.get('/detail/:id', datosController.detail);
 
-//Añadir producto
-router.get('/add', datosController.addProduct);
-router.post('/add', datosController.addProductPost);
+//Añadir entrada de HC
+router.get('/add', datosController.nuevaEntrada);
+router.post('/add', datosController.nuevaEntradaPost);
 
 //Añadir producto
 router.get('/nuevo-paciente', datosController.nuevoPaciente);
@@ -27,7 +27,7 @@ router.post('/nuevo-paciente', datosController.nuevoPacientePost);
 router.get('/edit/:id', datosController.detailProductEdit);
 router.post('/edit/:id', datosController.productEdit);
 
-//Borrar producto
+//Borrar paciente
 router.delete('/edit/:id/delete', datosController.productDelete);
 
 

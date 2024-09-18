@@ -11,7 +11,7 @@
 
   .topnav {
     overflow: hidden;
-    background-color: #333;
+    background-color: #5f92bd;
     width: 100%;
     display: flex;
     justify-content: space-between; /* Alinear a la izquierda y derecha */
@@ -28,16 +28,26 @@
     }
     
     .topnav a:hover {
-    background-color: #008066;
+    background-color: #567996;
     color: rgb(255, 255, 255);
     }
     
     .topnav a.active {
     color: white;
-    background-color: #009879;
+    background-color: #567996;
     font-weight: 500;
 
     }
+
+    .topnav n {
+    color: transparent !important;
+    height: 100%;
+    background-color: #bdbdbd;
+    text-size-adjust: auto;
+    font-size: 8px;
+    box-shadow: aqua;
+    box-shadow: 59px teal;
+  }
     
     @media screen and (max-width: 600px) {
     .topnav {
@@ -74,52 +84,12 @@
     text-align: center;
   }
   
-  .styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    width: 100%; /* Ajuste para ocupar toda la pantalla */
-  }
   
-  .styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-  }
-  
-  .styled-table th,
-  .styled-table td {
-    padding: 12px 20px;
-    text-align: center;
-  }
-
-  .styled-table td a {
-    color: #1e1e1f;
-  }
-  
-  .styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  .styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
-  
-  .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-  }
-  
-  .styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-  }
   
   button {
     appearance: none;
     backface-visibility: hidden;
-    background-color: #009879;
+    background-color: #5f92bd;
     border-radius: 2px;
     border-style: none;
     box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
@@ -145,15 +115,18 @@
   }
   
   button:hover {
-    background-color: #008066;
     opacity: 1;
     transform: translateY(0);
     transition-duration: .35s;
+    background-color: #121314;
+
   }
   
   button:active {
     transform: translateY(2px);
     transition-duration: .35s;
+    background-color: #121314;
+
   }
 
 
@@ -161,8 +134,12 @@
   button.last {
     width: 100%;
     height: 40px;
+    background-color: #5f92bd;
+  }
 
-
+    
+  button.last:hover {
+    background-color: #567996;
   }
   
   button.last a {
@@ -207,7 +184,7 @@
   }
   .edit-link i.fa-pencil-alt {
     margin-right: 5px; /* Añade un espacio entre el ícono y el texto (ajusta según sea necesario) */
-    color: #007bff; /* Cambia el color según tu preferencia */
+    color: #3c8cc2; /* Cambia el color según tu preferencia */
     font-size: 16px; /* Cambia el tamaño según tu preferencia */
     /* Otros estilos según sea necesario */
 }
@@ -219,17 +196,14 @@
     }
   
   
-    .styled-table th,
-    .styled-table td {
-      padding: 15px 6px;
-    }
+
   }
   
   /* Footer Styles */
   footer {
     text-align: center;
     padding: 10px;
-    background-color: #009879;
+    background-color: #567996;
     color: #ffffff;
     width: 100%;
     position: fixed;
@@ -243,7 +217,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #009879;
+    background-color: #567996;
     color: #ffffff;
     width: 100%; /* Ajuste para ocupar toda la pantalla */
   }
@@ -256,7 +230,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: #009879;
+    background-color: #567996;
   }
   
   nav a {

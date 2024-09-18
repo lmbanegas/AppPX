@@ -32,17 +32,17 @@
   }
   
   th {
-    background-color: #00b8c6; /* Color de fondo de la cabecera (uno de tus tonos de azul) */
+    background-color: #5f92bd; /* Color de fondo de la cabecera (uno de tus tonos de azul) */
     color: #ffffff; /* Texto blanco para la cabecera */
   }
   
-  tbody tr:nth-child(odd) {
-    background-color: #f2f2f2; /* Alternar color de fondo para filas impares */
+  tbody tr {
+    background-color: #f8f8f8;
   }
   
   tbody tr:hover {
-    background-color: #00b8c6;
-    color: white;
+    background-color: #e0e0e0;
+    color: rgb(0, 0, 0);
     cursor: pointer;
   }
   

@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  <title>Nueva consulta</title>
+</head>
+<body>
+  <%- include('header') %>
+
+  
+  <br>
+  <h1>Nueva entrada</h1>
+  <br>
+  <div class="addProduct">
+  <form action="/pacientes/add" method="post" autocomplete="off"
+  >
+    <label for="px">Paciente:</label>
+    <select id="px" name="px" required>
+
+    </select>
+    
+
+
+    <label id="fecha" for="fecha">Fecha de consulta:</label>
+    <input type="date">
+
+    <br>
+
+
+
+
+    <label for="comentario">Comentario:</label>
+    <input type="text" id="comentario" name="comentario" required>
+    <br>
+
+    
+
+    <br>
+
+
+    <button class="last" type="submit">Agregar</button>
+  </form>
+
+  </div>
+
+</body>
+
+</html>

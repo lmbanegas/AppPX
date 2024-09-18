@@ -52,7 +52,7 @@ const loginPost = async (req, res) => {
     const password = req.body.password;
 
     // Verificar las credenciales en el servidor
-    if (username === 'miguel' && password === 'miguel') {
+    if (username === 'liclg' && password === 'liclg') {
       res.cookie('username', username, { maxAge: 24 * 60 * 60 * 1000 });
       req.session.user = username;
       res.redirect('/');
@@ -71,10 +71,14 @@ const loginPost = async (req, res) => {
 
 const allpacientes = async (req, res) => {
     try {
-      const query = 'SELECT * FROM public.pacientes ORDER BY name'; 
-      const result = await pool.query(query);
+    //   const query = 'SELECT * FROM public.pacientes ORDER BY name'; 
+    //   const result = await pool.query(query);
 
-      res.render('pacientes', { pacientes: result.rows });
+    //   res.render('pacientes', { pacientes: result.rows });
+
+
+      res.render('pacientes');
+
     } catch (error) {
       console.error('Error de consulta:', error.message);
       res.status(500).send('Error de consulta');
@@ -106,24 +110,33 @@ const detail = async (req, res) => {
   }
 };
 
-const addProduct = async (req, res) => {
+const nuevaEntrada = async (req, res) => {
 
-  const resultado = "SELECT * FROM public.pacientes";
-  const resultados = await pool.query(resultado);
+  // const resultado = "SELECT * FROM public.pacientes";
+  // const resultados = await pool.query(resultado);
   
-  console.log('Consulta exitosa. Resultados:', resultados.rows);
+  // console.log('Consulta exitosa. Resultados:', resultados.rows);
       
 
-  res.render('productAdd', {resultados: resultados.rows});
+  // res.render('nuevaEntrada', {resultados: resultados.rows});
+
+
+  // const resultado = "SELECT * FROM public.pacientes";
+  // const resultados = await pool.query(resultado);
+  
+  // console.log('Consulta exitosa. Resultados:', resultados.rows);
+      
+
+  res.render('nuevaEntrada');
 };
 
-const addProductPost = async (req, res) => {
+const nuevaEntradaPost = async (req, res) => {
   try {
-    const { px, fecha, comentario } = req.body;
+    // const { px, fecha, comentario } = req.body;
 
 
-    const query = 'INSERT INTO public.historiaPX (idpaciente, fecha, comentario) VALUES ($1, $2, $3) RETURNING *';
-    const result = await pool.query(query, [px, fecha, comentario]);
+    // const query = 'INSERT INTO public.historiaPX (idpaciente, fecha, comentario) VALUES ($1, $2, $3) RETURNING *';
+    // const result = await pool.query(query, [px, fecha, comentario]);
 
     // Redirigir a la página de detalles del nuevo producto
     res.redirect(`/pacientes/`);
@@ -252,4 +265,4 @@ const nuevoPacientePost = async (req, res) => {
 
 
 
-module.exports = {home,loginGet, loginPost, allpacientes, detail, addProduct, addProductPost, detailProductEdit, productEdit, productDelete, crearPedido, nuevoPaciente, nuevoPacientePost };
+module.exports = {home,loginGet, loginPost, allpacientes, detail, nuevaEntrada, nuevaEntradaPost, detailProductEdit, productEdit, productDelete, crearPedido, nuevoPaciente, nuevoPacientePost };

@@ -12,7 +12,6 @@ router.post('/login',loginValidation, controller.loginPost);
 
 router.use(userValidation);
 
-router.get('/', controller.home);
-router.post('/crear-pedido', controller.crearPedido);
+router.get('/', controller.nuevaEntrada);
 
 module.exports = router;
