@@ -17,62 +17,66 @@
 
 <body>
   <%- include('header') %>
+      <a href="/pacientes/">
+        <button class="print">
+          Volver
+        </button>
+      </a>
 
-
-    <article>
-
-      <button class="print">
-        <a href="/pacientes">Volver</a>
-      </button>
-
-      <br>
       <h1>Editar paciente</h1>
 
-      <br>
 
-      <div class="añ">
-        <form action="/pacientes/edit/<%= producto.id %>" method="post">
-          <label for="name">Nuevo Nombre:</label>
-          <input type="text" id="name" name="name" value="<%= producto.name %>" required>
+      <form action="/pacientes/nuevo-paciente" method="post" autocomplete="off" class="formNuevoPaciente">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre"><br><br>
+    
+        <label for="apellido">Apellido:</label><br>
+        <input type="text" id="apellido" name="apellido"><br><br>
+    
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label><br>
+        <input type="date" id="fechaNacimiento" name="fechaNacimiento"><br><br>
+    
+        <label for="documento">Documento:</label><br>
+        <input type="text" id="documento" name="documento"><br><br>
+    
+        <label for="domicilio">Domicilio:</label><br>
+        <input type="text" id="domicilio" name="domicilio"><br><br>
+    
+        <label for="nucleoFamiliar">Núcleo Familiar:</label><br>
+        <input type="text" id="nucleoFamiliar" name="nucleoFamiliar"><br><br>
+    
+        <label for="telefono">Teléfono:</label><br>
+        <input type="tel" id="telefono" name="telefono"><br><br>
+    
+        <label for="telefonoAlternativo">Teléfono Alternativo:</label><br>
+        <input type="tel" id="telefonoAlternativo" name="telefonoAlternativo"><br><br>
+    
+        <label for="antecedentesFamiliares">Antecedentes Familiares:</label><br>
+        <textarea id="antecedentesFamiliares" name="antecedentesFamiliares"></textarea><br><br>
+    
+        <label for="antecedentesPersonales">Antecedentes Personales:</label><br>
+        <textarea id="antecedentesPersonales" name="antecedentesPersonales"></textarea><br><br>
+    
+        <label for="motivoConsulta">Motivo de Consulta:</label><br>
+        <textarea id="motivoConsulta" name="motivoConsulta"></textarea><br><br>
+    
+        <label for="obraSocial">Obra Social:</label><br>
+        <input type="text" id="obraSocial" name="obraSocial"><br><br>
+    
+        <button class="last" type="submit">Guardar cambios</button>
 
-          <label for="price">Nuevo Precio:</label>
-          <input type="text" id="price" name="price" value="<%= producto.price %>" required>
 
-          <label for="category">Nueva categoría:</label>
-          <select id="category" name="category" class="category" required>
-            <option value="<%= producto.category%>"selected> Sin cambios </option>
-            <option value="Cigarrillos">Cigarrillos</option>
-            <option value="Analgesicos">Analgesicos</option>
-            <option value="Encendedores">Encendedores</option>
-            <option value="Pegamentos">Pegamentos</option>
-            <option value="Pilas">Pilas</option>
-            <option value="Filos">Filos</option>
-            <option value="Preservativos">Preservativos</option>
-          </select>
+        <form action="x" method="POST">
+          <button class="last" type="submit" style="background-color: rgba(223, 59, 59, 0.801);">Borrar</button>
+        </form>
 
-          </select>
-
-          <label for="aumento">Aplicar Aumento:</label>
-          <div class="edit">
-
-            <input type="number" id="aumento" name="aumento"> %
-          </div>
-          <br>
-          <button class="last" type="submit">Guardar Cambios</button>
-          <br>
+        
+    </form>
 
 
 
-      </form>
 
-      <form action="/pacientes/edit/<%= producto.id%>/delete?_method=DELETE" method="POST">
-        <button class="last" style="background-color: #E23636" type="submit">Borrar</button>
-      </form>
-    </div>
 
-    </article>
-
-    <footer> © 2023 | Todos los derechos reservados </footer>
 
 </body>
 

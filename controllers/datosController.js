@@ -71,10 +71,10 @@ const loginPost = async (req, res) => {
 
 const allpacientes = async (req, res) => {
     try {
-    //   const query = 'SELECT * FROM public.pacientes ORDER BY name'; 
-    //   const result = await pool.query(query);
+      const query = 'SELECT * FROM public.px'; 
+      const result = await pool.query(query);
 
-    //   res.render('pacientes', { pacientes: result.rows });
+      res.render('pacientes', { pacientes: result.rows });
 
 
       res.render('pacientes');
@@ -181,15 +181,8 @@ const detalleEditarPaciente = async (req, res) => {
   try {
     const id = req.params.id;
 
-    const query = 'SELECT * FROM public.articulos WHERE id = $1';
-    const result = await pool.query(query, [id]);
 
-    if (result.rows.length > 0) {
-      const producto = result.rows[0];
-      res.render('productEdit', { producto });
-    } else {
-      res.status(404).send('Paciente no encontrado');
-    }
+      res.render('editarPaciente');
   } catch (error) {
     console.error('Error al mostrar formulario de edición:', error.message);
     res.status(500).send('Error al mostrar formulario de edición');

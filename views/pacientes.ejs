@@ -39,11 +39,26 @@
     </tbody>
   </table>
 
+
+  <% resultados.forEach(paciente => { %>
+    <tr>
+      <td><%= paciente.nombre %></td>
+      <td><%= paciente.apellido %></td>
+      <td><%= paciente.fechaNacimiento %></td>
+      <td><%= paciente.documento %></td>
+      <td><%= paciente.domicilio %></td>
+      <td><%= paciente.nucleoFamiliar %></td>
+      <td><%= paciente.telefono %></td>
+      <td><%= paciente.telefonoAlternativo %></td>
+      <td><%= paciente.antecedentesPersonales %></td>
+      <td><%= paciente.antecedentesFamiliares %></td>
+      <td><%= paciente.motivoConsulta %></td>
+      <td><%= paciente.obraSocial></td>        
+    </tr>
+  <% }); %>
+
     <a href="nuevo-paciente">
-
       <button class="print">Añadir paciente</button>
-
-
     </a>
 
 
