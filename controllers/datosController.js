@@ -114,6 +114,34 @@ const detail = async (req, res) => {
   }
 };
 
+const hc = async (req, res) => {
+  try {
+    // // Obtén el id de los parámetros de la URL
+    // const id = req.params.id;
+
+    // // Realiza la consulta SQL con una cláusula WHERE para filtrar por id
+    // const query = 'SELECT * FROM public.articulos WHERE id = $1'
+    // ;
+    // const result = await pool.query(query, [id]);
+
+    // // Verifica si se encontró un resultado
+    // if (result.rows.length > 0) {
+    //   const dato = result.rows[0];
+    //   res.render('productDetail', { dato });
+    // } else {
+    //   // Si no se encuentra el dato, puedes manejarlo como desees
+    //   res.status(404).send('Dato no encontrado');
+    // }
+
+    res.render('historiaClinica');
+
+
+  } catch (error) {
+    console.error('Error de consulta:', error.message);
+    res.status(500).send('Error de consulta');
+  }
+};
+
 const nuevaEntrada = async (req, res) => {
 
   // const resultado = "SELECT * FROM public.pacientes";
@@ -138,20 +166,18 @@ const nuevaEntradaPost = async (req, res) => {
   try {
     // const { px, fecha, comentario } = req.body;
 
-
     // const query = 'INSERT INTO public.historiaPX (idpaciente, fecha, comentario) VALUES ($1, $2, $3) RETURNING *';
     // const result = await pool.query(query, [px, fecha, comentario]);
 
-    // Redirigir a la página de detalles del nuevo producto
     res.redirect(`/pacientes/`);
   } catch (error) {
-    console.error('Error al agregar producto:', error.message);
-    res.status(500).send('Error al agregar producto');
+    console.error('Error al agregar nueva entrada:', error.message);
+    res.status(500).send('Error al agregar entrada');
   }
 };
 
 
-const detailProductEdit = async (req, res) => {
+const detalleEditarPaciente = async (req, res) => {
   try {
     const id = req.params.id;
 
@@ -162,7 +188,7 @@ const detailProductEdit = async (req, res) => {
       const producto = result.rows[0];
       res.render('productEdit', { producto });
     } else {
-      res.status(404).send('Producto no encontrado');
+      res.status(404).send('Paciente no encontrado');
     }
   } catch (error) {
     console.error('Error al mostrar formulario de edición:', error.message);
@@ -171,7 +197,7 @@ const detailProductEdit = async (req, res) => {
 };
 
 
-const productEdit = async (req, res) => {
+const editarPaciente = async (req, res) => {
   try {
     const id = req.params.id;
     let { name, price, aumento, category } = req.body;
@@ -188,12 +214,12 @@ const productEdit = async (req, res) => {
 
     res.redirect(`/pacientes/`);
   } catch (error) {
-    console.error('Error al editar producto:', error.message);
-    res.status(500).send('Error al editar producto');
+    console.error('Error al editar datos del paciente:', error.message);
+    res.status(500).send('Error al editar datos del  paciente');
   }
 };
 
-const productDelete = async (req, res) => {
+const pacienteDelete = async (req, res) => {
   try {
     const id = req.params.id;
 
@@ -207,45 +233,11 @@ const productDelete = async (req, res) => {
 
     res.redirect(`/`);
   } catch (error) {
-    console.error('Error al editar producto:', error.message);
-    res.status(500).send('Error al editar producto');
+    console.error('Error:', error.message);
+    res.status(500).send('Error');
   }
 };
 
-
-
-const crearPedido = (req, res) => {
-
-  const fecha = new Date();
-  const dia = fecha.getDate();
-  const mes = fecha.getMonth() + 1;
-  const anio = fecha.getFullYear();
-
-  const diaFactura =  dia + "/" + mes + "/" + anio
-  
-  const productos = req.body.name;
-  const cantidades = req.body.cantidad;
-  const precios = req.body.price;
-  let totalCarrito = 0;
-  const productosSeleccionados = [];
-
-  for (let i = 0; i < productos.length; i++) {
-    const nombre = productos[i];
-    const cantidad = parseInt(cantidades[i], 10);
-    const precio = parseFloat(precios[i]);
-    const precioTotal = 0;
-
-    if (cantidad > 0) {
-        productosSeleccionados.push({ nombre, cantidad, precio, precioTotal });
-    }
-}
-
-
-
-
-
-  res.render('pedido', { productosSeleccionados:productosSeleccionados, totalCarrito: totalCarrito, diaFactura:diaFactura});
-};
 
 const nuevoPaciente = (req, res) => {
   res.render('nuevoPaciente');
@@ -259,14 +251,13 @@ const nuevoPacientePost = async (req, res) => {
     const query = 'INSERT INTO public.pacientes (nombre, apellido, telefono) VALUES ($1, $2, $3) RETURNING *';
     const result = await pool.query(query, [nombre, apellido, telefono]);
 
-    // Redirigir a la página de detalles del nuevo producto
     res.redirect(`/pacientes/`);
   } catch (error) {
-    console.error('Error al agregar producto:', error.message);
-    res.status(500).send('Error al agregar producto');
+    console.error('Error al añadir nuevo paciente:', error.message);
+    res.status(500).send('Error al añadir nuevo paciente');
   }
 };
 
 
 
-module.exports = {home,loginGet, loginPost, allpacientes, detail, nuevaEntrada, nuevaEntradaPost, detailProductEdit, productEdit, productDelete, crearPedido, nuevoPaciente, nuevoPacientePost };
+module.exports = {home,loginGet, loginPost, allpacientes, detail, hc, nuevaEntrada, nuevaEntradaPost, detalleEditarPaciente, editarPaciente, pacienteDelete, nuevoPaciente, nuevoPacientePost };

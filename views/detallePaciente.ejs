@@ -18,70 +18,30 @@
   <%- include('header') %>
 
 
-    <div id="pdfContent">
 
 
-      <h1>Historia Clínica:</h1>
+
+      <h1>Detalle de paciente:</h1>
       <br>
-      <p>Nombre y Apellido: Lucas Banegas</p>
-      <p>DNI: 37.783.367</p>
+      <h2>Datos personales</h2>
       <br>
-
-      <div class="entradaHC">
-        <p>Fecha: 04/09/2024</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
-          commodi doloremque, quasi ex, odio,
-          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
-      </div>
-      <br>
-      <br>
-      <div class="entradaHC">
-        <p>Fecha: 11/09/2024</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
-          commodi doloremque, quasi ex, odio,
-          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
-      </div>
-      <br>
-
-      <div class="entradaHC">
-        <p>Fecha: 18/09/2024</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
-          commodi doloremque, quasi ex, odio,
-          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
-      </div>
+      <p><b>Nombre y Apellido:</b> Lucas Banegas</p>
+      <p><b>DNI:</b> 37.783.367</p>
+      <p><b>Domicilio:</b> Av. Belgrano 400</p>
+      <p><b>Dato:</b> Completar</p>
+      <p><b>Dato:</b> Completar</p>
+      <p><b>Dato:</b> Completar</p>
+      <p><b>Dato:</b> Completar</p>
 
 
-      
-
-
+ <div class="buttonDetallePaciente"> 
+       <a href="/pacientes/edit/1" style="text-decoration: none; color: white"> <button>Editar datos</button></a>
+      <a href="/pacientes/hc/1" style="text-decoration: none; color: white"><button> Ver historia clínica</button></a>
     </div>
-
-    <div>
-      <br><br><br>
-      <button class="print" onclick="imprimirPDF()">Imprimir historia</button>
-
-    </div>
-
-    <footer> © 2023 | Todos los derechos reservados </footer>
 
 </body>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
-<script>
-  function imprimirPDF() {
 
-
-    const element = document.getElementById("pdfContent");
-
-    html2pdf(element, {
-      margin: 10,
-      filename: 'pedido.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    });
-  }
-</script>
 
 </html>

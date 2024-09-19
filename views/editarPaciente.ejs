@@ -11,7 +11,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
 
-  <title>Editar Producto</title>
+  <title>Editar datos de paciente</title>
 
 </head>
 
@@ -26,11 +26,11 @@
       </button>
 
       <br>
-      <h1>Editar Producto</h1>
+      <h1>Editar paciente</h1>
 
       <br>
 
-      <div class="addProduct">
+      <div class="añ">
         <form action="/pacientes/edit/<%= producto.id %>" method="post">
           <label for="name">Nuevo Nombre:</label>
           <input type="text" id="name" name="name" value="<%= producto.name %>" required>

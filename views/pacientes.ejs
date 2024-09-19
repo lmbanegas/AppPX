@@ -15,44 +15,39 @@
   <%- include('header') %>
 
   <br>
-  <br>  <h1>Lista de Pacientes</h1>
+  <br>  <h1>Lista de pacientes</h1>
     
   <br>
   <table class="tablaPacientes">
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Teléfono</th>
-        <th>Historia Clínica</th>
-        <th>Editar usuario</th>
+        <th>Nombre y apellido</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Juan</td>
-        <td>Pérez</td>
-        <td>123-456-7890</td>
-        <td> <a href="/pacientes/detalle/1 ">▶</a></td>
-        <td>▶</td>
-
+        <td><a href="/pacientes/detalle/1 "> 
+        Juan Perez</a></td>
+      
       </tr>
       <tr>
-        <td>Marta</td>
-        <td>Gómez</td>
-        <td>987-654-3210</td>
-        <td>▶</td>
-        <td>▶</td>
+        <td>Marta Gomez</td>
       </tr>
       <tr>
-        <td>Carlos</td>
-        <td>Fernández</td>
-        <td>456-789-0123</td>
-        <td>▶</td>
-        <td>▶</td>
+        <td>Carlos Fernández</td>
       </tr>
     </tbody>
   </table>
+
+    <a href="nuevo-paciente">
+
+      <button class="print">Añadir paciente</button>
+
+
+    </a>
+
+
+
 
 </body>
 

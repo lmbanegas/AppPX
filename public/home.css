@@ -71,19 +71,8 @@
     font-size: 18px;
   }
   
-  .product {
-    color: #1e1e1f;
-  }
 
-  .product td{
-    width: 15%;
-  }
-  
-  .product input {
-    width: 50px;
-    text-align: center;
-  }
-  
+
   
   
   button {
@@ -149,9 +138,15 @@
   }
 
   button.print {
-    width: 50%;
-    height: 35px;
-
+      position:fixed;
+      width:120px;
+      height:60px;
+      bottom:40px;
+      right:40px;
+      background-color:#5f92bd;
+      color:#FFF;
+      text-align:center;
+      box-shadow: 2px 2px 3px #999;
   }
 
   button.print a{
@@ -202,14 +197,23 @@
   /* Footer Styles */
   footer {
     text-align: center;
-    padding: 10px;
     background-color: #567996;
     color: #ffffff;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    padding-bottom: 20px; /* Ajusta el valor según sea necesario */
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+
   }
+
+
+
+ h1 {
+  text-align: center;
+  margin: 30px;
+ }  
+
   
   /* Header/Navbar Styles */
   header {

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  <title>Historia Clínica</title>
+
+</head>
+
+<body>
+
+
+  <%- include('header') %>
+
+
+
+    <div id="pdfContent">
+
+      <h1>Historia Clínica de paciente:</h1>
+
+      <div class="datosPersonales">
+        <p><b>Nombre y Apellido:</b> Lucas Banegas</p>
+        <p><b>DNI:</b> 37.783.367</p>
+        <p><b>Domicilio:</b> Av Belgrano 3020</p>
+        <p><b>Dato1:</b> Dato extra</p>
+        <p><b>Dato2:</b> Dato extra </p>
+
+
+      </div>
+
+      <div class="detalleHC">
+        <p><b>Fecha: 04/09/2024</b></p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
+          commodi doloremque, quasi ex, odio,
+          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
+        <img src="/firma.png" alt="Firma" width="15%">
+      </div>
+
+      <div class="detalleHC">
+        <p><b>Fecha: 04/09/2024</b></p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
+          commodi doloremque, quasi ex, odio,
+          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
+        <img src="/firma.png" alt="Firma" width="15%">
+      </div>
+
+      <div class="detalleHC">
+        <p><b>Fecha: 04/09/2024</b></p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
+          commodi doloremque, quasi ex, odio,
+          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
+        <img src="/firma.png" alt="Firma" width="15%">
+      </div>
+
+      <div class="detalleHC">
+        <p><b>Fecha: 04/09/2024</b></p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
+          commodi doloremque, quasi ex, odio,
+          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
+        <img src="/firma.png" alt="Firma" width="15%">
+      </div>
+
+    </div>
+
+
+    
+    <button class="print" onclick="imprimirPDF()">Exportar PDF</button>
+
+
+
+
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
+<script>
+  function imprimirPDF() {
+
+
+    const element = document.getElementById("pdfContent");
+
+    html2pdf(element, {
+      margin: 10,
+      filename: 'pedido.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    });
+  }
+</script>
+
+</html>
