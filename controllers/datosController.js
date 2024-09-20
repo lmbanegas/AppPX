@@ -77,8 +77,6 @@ const allpacientes = async (req, res) => {
       res.render('pacientes', { pacientes: result.rows });
 
 
-      res.render('pacientes');
-
     } catch (error) {
       console.error('Error de consulta:', error.message);
       res.status(500).send('Error de consulta');
@@ -88,22 +86,20 @@ const allpacientes = async (req, res) => {
 
 const detail = async (req, res) => {
   try {
-    // // Obtén el id de los parámetros de la URL
-    // const id = req.params.id;
+    const id = req.params.id;
 
-    // // Realiza la consulta SQL con una cláusula WHERE para filtrar por id
-    // const query = 'SELECT * FROM public.articulos WHERE id = $1'
-    // ;
-    // const result = await pool.query(query, [id]);
+    const query = 'SELECT * FROM public.px WHERE id = $1'
+    const result = await pool.query(query, [id]);
 
-    // // Verifica si se encontró un resultado
-    // if (result.rows.length > 0) {
-    //   const dato = result.rows[0];
-    //   res.render('productDetail', { dato });
-    // } else {
-    //   // Si no se encuentra el dato, puedes manejarlo como desees
-    //   res.status(404).send('Dato no encontrado');
-    // }
+
+    // Verifica si se encontró un resultado
+    if (result.rows.length > 0) {
+      const dato = result.rows[0];
+      res.render('detallePaciente', { dato });
+    } else {
+      // Si no se encuentra el dato, puedes manejarlo como desees
+      res.status(404).send('Dato no encontrado');
+    }
 
     res.render('detallePaciente');
 
@@ -181,8 +177,12 @@ const detalleEditarPaciente = async (req, res) => {
   try {
     const id = req.params.id;
 
+    const query = 'SELECT * FROM public.px WHERE id = $1'
+    const result = await pool.query(query, [id]);
+    const dato = result.rows[0];
 
-      res.render('editarPaciente');
+
+      res.render('editarPaciente', { dato });
   } catch (error) {
     console.error('Error al mostrar formulario de edición:', error.message);
     res.status(500).send('Error al mostrar formulario de edición');
@@ -239,10 +239,43 @@ const nuevoPaciente = (req, res) => {
 
 const nuevoPacientePost = async (req, res) => {
   try {
-    const { nombre, apellido, telefono } = req.body;
+    const {
+      nombre,
+      apellido,
+      fechaNacimiento,
+      documento,
+      domicilio,
+      nucleoFamiliar,
+      telefono,
+      telefonoAlternativo,
+      antecedentesFamiliares,
+      antecedentesPersonales,
+      motivoConsulta,
+      obraSocial
+    } = req.body;
 
-    const query = 'INSERT INTO public.pacientes (nombre, apellido, telefono) VALUES ($1, $2, $3) RETURNING *';
-    const result = await pool.query(query, [nombre, apellido, telefono]);
+    const query = `
+      INSERT INTO px 
+      (nombre, apellido, fechanacimiento, documento, domicilio, nucleofamiliar, telefono, telefonoalternativo, antecedentesfamiliares, antecedentespersonales, motivoconsulta, obrasocial) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) 
+      RETURNING *`;
+
+    const values = [
+      nombre,
+      apellido,
+      fechaNacimiento,
+      documento,
+      domicilio,
+      nucleoFamiliar,
+      telefono,
+      telefonoAlternativo,
+      antecedentesFamiliares,
+      antecedentesPersonales,
+      motivoConsulta,
+      obraSocial
+    ];
+
+    const result = await pool.query(query, values);
 
     res.redirect(`/pacientes/`);
   } catch (error) {
@@ -250,6 +283,7 @@ const nuevoPacientePost = async (req, res) => {
     res.status(500).send('Error al añadir nuevo paciente');
   }
 };
+
 
 
 

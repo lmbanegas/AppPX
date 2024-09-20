@@ -18,44 +18,26 @@
   <br>  <h1>Lista de pacientes</h1>
     
   <br>
-  <table class="tablaPacientes">
+
+
+  <table>
     <thead>
       <tr>
-        <th>Nombre y apellido</th>
+        <th>Nombre y Apellido</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><a href="/pacientes/detalle/1 "> 
-        Juan Perez</a></td>
-      
-      </tr>
-      <tr>
-        <td>Marta Gomez</td>
-      </tr>
-      <tr>
-        <td>Carlos Fernández</td>
-      </tr>
+      <% pacientes.forEach(paciente => { %>
+            <tr>
+              
+          <td><a href="/pacientes/detalle/<%= paciente.id %>"><%= paciente.nombre %> <%= paciente.apellido %> </a></td>
+       
+
+        </tr>
+      <% }); %>
     </tbody>
   </table>
-
-
-  <% resultados.forEach(paciente => { %>
-    <tr>
-      <td><%= paciente.nombre %></td>
-      <td><%= paciente.apellido %></td>
-      <td><%= paciente.fechaNacimiento %></td>
-      <td><%= paciente.documento %></td>
-      <td><%= paciente.domicilio %></td>
-      <td><%= paciente.nucleoFamiliar %></td>
-      <td><%= paciente.telefono %></td>
-      <td><%= paciente.telefonoAlternativo %></td>
-      <td><%= paciente.antecedentesPersonales %></td>
-      <td><%= paciente.antecedentesFamiliares %></td>
-      <td><%= paciente.motivoConsulta %></td>
-      <td><%= paciente.obraSocial></td>        
-    </tr>
-  <% }); %>
+  
 
     <a href="nuevo-paciente">
       <button class="print">Añadir paciente</button>

@@ -17,67 +17,57 @@
 
 <body>
   <%- include('header') %>
-      <a href="/pacientes/">
-        <button class="print">
-          Volver
-        </button>
-      </a>
+  <a href="/pacientes/">
+    <button class="print">
+      Volver
+    </button>
+  </a>
 
-      <h1>Editar paciente</h1>
+  <h1>Editar paciente</h1>
 
+  <form action="/pacientes/edit/<%= dato.id %>" method="post" autocomplete="off" class="formNuevoPaciente">
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" name="nombre" value="<%= dato.nombre %>"><br><br>
 
-      <form action="/pacientes/nuevo-paciente" method="post" autocomplete="off" class="formNuevoPaciente">
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre"><br><br>
-    
-        <label for="apellido">Apellido:</label><br>
-        <input type="text" id="apellido" name="apellido"><br><br>
-    
-        <label for="fechaNacimiento">Fecha de Nacimiento:</label><br>
-        <input type="date" id="fechaNacimiento" name="fechaNacimiento"><br><br>
-    
-        <label for="documento">Documento:</label><br>
-        <input type="text" id="documento" name="documento"><br><br>
-    
-        <label for="domicilio">Domicilio:</label><br>
-        <input type="text" id="domicilio" name="domicilio"><br><br>
-    
-        <label for="nucleoFamiliar">Núcleo Familiar:</label><br>
-        <input type="text" id="nucleoFamiliar" name="nucleoFamiliar"><br><br>
-    
-        <label for="telefono">Teléfono:</label><br>
-        <input type="tel" id="telefono" name="telefono"><br><br>
-    
-        <label for="telefonoAlternativo">Teléfono Alternativo:</label><br>
-        <input type="tel" id="telefonoAlternativo" name="telefonoAlternativo"><br><br>
-    
-        <label for="antecedentesFamiliares">Antecedentes Familiares:</label><br>
-        <textarea id="antecedentesFamiliares" name="antecedentesFamiliares"></textarea><br><br>
-    
-        <label for="antecedentesPersonales">Antecedentes Personales:</label><br>
-        <textarea id="antecedentesPersonales" name="antecedentesPersonales"></textarea><br><br>
-    
-        <label for="motivoConsulta">Motivo de Consulta:</label><br>
-        <textarea id="motivoConsulta" name="motivoConsulta"></textarea><br><br>
-    
-        <label for="obraSocial">Obra Social:</label><br>
-        <input type="text" id="obraSocial" name="obraSocial"><br><br>
-    
-        <button class="last" type="submit">Guardar cambios</button>
+    <label for="apellido">Apellido:</label><br>
+    <input type="text" id="apellido" name="apellido" value="<%= dato.apellido %>"><br><br>
 
+    <label for="fechaNacimiento">Fecha de Nacimiento:</label><br>
+    <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<%= new Date(dato.fechanacimiento).toISOString().split('T')[0] %>"><br><br>
 
-        <form action="x" method="POST">
-          <button class="last" type="submit" style="background-color: rgba(223, 59, 59, 0.801);">Borrar</button>
-        </form>
+    <label for="documento">Documento:</label><br>
+    <input type="text" id="documento" name="documento" value="<%= dato.documento %>"><br><br>
 
-        
+    <label for="domicilio">Domicilio:</label><br>
+    <input type="text" id="domicilio" name="domicilio" value="<%= dato.domicilio %>"><br><br>
+
+    <label for="nucleoFamiliar">Núcleo Familiar:</label><br>
+    <input type="text" id="nucleoFamiliar" name="nucleoFamiliar" value="<%= dato.nucleofamiliar %>"><br><br>
+
+    <label for="telefono">Teléfono:</label><br>
+    <input type="tel" id="telefono" name="telefono" value="<%= dato.telefono %>"><br><br>
+
+    <label for="telefonoAlternativo">Teléfono Alternativo:</label><br>
+    <input type="tel" id="telefonoAlternativo" name="telefonoAlternativo" value="<%= dato.telefonoalternativo %>"><br><br>
+
+    <label for="antecedentesFamiliares">Antecedentes Familiares:</label><br>
+    <textarea id="antecedentesFamiliares" name="antecedentesFamiliares"><%= dato.antecedentesfamiliares %></textarea><br><br>
+
+    <label for="antecedentesPersonales">Antecedentes Personales:</label><br>
+    <textarea id="antecedentesPersonales" name="antecedentesPersonales"><%= dato.antecedentespersonales %></textarea><br><br>
+
+    <label for="motivoConsulta">Motivo de Consulta:</label><br>
+    <textarea id="motivoConsulta" name="motivoConsulta"><%= dato.motivoconsulta %></textarea><br><br>
+
+    <label for="obraSocial">Obra Social:</label><br>
+    <input type="text" id="obraSocial" name="obraSocial" value="<%= dato.obrasocial %>"><br><br>
+
+    <button class="last" type="submit">Guardar cambios</button>
+
+    <form action="x" method="POST">
+      <button class="last" type="submit" style="background-color: rgba(223, 59, 59, 0.801);">Borrar</button>
     </form>
-
-
-
-
-
-
+  </form>
 </body>
 
 </html>

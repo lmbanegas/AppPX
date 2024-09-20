@@ -18,25 +18,25 @@
   <%- include('header') %>
 
 
+  <h1>Detalles del Paciente</h1>
 
-
-
-      <h1>Detalle de paciente:</h1>
-      <br>
-      <h2>Datos personales</h2>
-      <br>
-      <p><b>Nombre y Apellido:</b> Lucas Banegas</p>
-      <p><b>DNI:</b> 37.783.367</p>
-      <p><b>Domicilio:</b> Av. Belgrano 400</p>
-      <p><b>Dato:</b> Completar</p>
-      <p><b>Dato:</b> Completar</p>
-      <p><b>Dato:</b> Completar</p>
-      <p><b>Dato:</b> Completar</p>
-
+  <p><strong>Nombre:</strong> <%= dato.nombre %></p>
+  <p><strong>Apellido:</strong> <%= dato.apellido %></p>
+  <p><strong>Fecha de Nacimiento:</strong> <%= new Date(dato.fechanacimiento).toLocaleDateString('es-ES') %></p>
+  <p><strong>Documento:</strong> <%= dato.documento %></p>
+  <p><strong>Domicilio:</strong> <%= dato.domicilio %></p>
+  <p><strong>Núcleo Familiar:</strong> <%= dato.nucleofamiliar %></p>
+  <p><strong>Teléfono:</strong> <%= dato.telefono %></p>
+  <p><strong>Teléfono Alternativo:</strong> <%= dato.telefonoalternativo %></p>
+  <p><strong>Antecedentes Familiares:</strong> <%= dato.antecedentesfamiliares %></p>
+  <p><strong>Antecedentes Personales:</strong> <%= dato.antecedentespersonales %></p>
+  <p><strong>Motivo de Consulta:</strong> <%= dato.motivoconsulta %></p>
+  <p><strong>Obra Social:</strong> <%= dato.obrasocial %></p>
+  
 
  <div class="buttonDetallePaciente"> 
-       <a href="/pacientes/edit/1" style="text-decoration: none; color: white"> <button>Editar datos</button></a>
-      <a href="/pacientes/hc/1" style="text-decoration: none; color: white"><button> Ver historia clínica</button></a>
+       <a href="/pacientes/edit/<%= dato.id %>" style="text-decoration: none; color: white"> <button>Editar datos</button></a>
+      <a href="/pacientes/hc/<%= dato.id %>" style="text-decoration: none; color: white"><button> Ver historia clínica</button></a>
     </div>
 
 </body>
