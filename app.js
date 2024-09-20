@@ -6,11 +6,8 @@ const bodyParser = require('body-parser');
 const { Pool } = require('pg');
 const path = require('path');
 
-
 const app = express();
 const port = 3000;
-
-
 
 
 // Configurar EJS como motor de plantillas
@@ -23,7 +20,6 @@ app.set('views', [
 ]);
 
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 app.use(session({
   secret: 'your-secret-key',
@@ -50,10 +46,7 @@ app.use(methodOverride('_method'));
 
 
 // ------- ***** VS ***** ------- /
-
-
 const connectionString = 'postgresql://datatabasepx_user:aQ03haJ4FmjHl4yVQDwAp13zrb8PTrPN@dpg-crk81d3qf0us73df2u8g-a.oregon-postgres.render.com/datatabasepx';
-
 // Crear una nueva instancia de Pool para manejar la conexión
 const pool = new Pool({
   connectionString: connectionString,

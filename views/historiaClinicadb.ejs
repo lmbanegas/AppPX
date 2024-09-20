@@ -23,9 +23,7 @@
       <h1>Historia Clínica de paciente:</h1>
 
       <div class="datosPersonales" id="datosPersonales">
-        <p><b>Nombre y Apellido:
-
-        <div id="datos"></b>Lucas Banegas</p></div>
+        <p><b>Nombre y Apellido:</b>   </p></div>
 
 
         <p><b>DNI:</b> 37.783.367</p>
@@ -73,6 +71,15 @@
 
     
     <button class="print" onclick="imprimirPDF()">Exportar PDF</button>
+
+
+    CONFIG DB
+
+    <% resultados.forEach(paciente => { %>
+      <%= paciente.fecha %>
+      <%= paciente.comentario %>
+      <img src="/firma.png" alt="Firma" width="15%">
+    <% }); %>
 
 
 

@@ -20,8 +20,7 @@
 
   <h1>Detalles del Paciente</h1>
 
-  <p><strong>Nombre:</strong> <%= dato.nombre %></p>
-  <p><strong>Apellido:</strong> <%= dato.apellido %></p>
+  <p><strong>Nombre y apellido:</strong> <%= dato.nombre %> <%= dato.apellido %></p>
   <p><strong>Fecha de Nacimiento:</strong> <%= new Date(dato.fechanacimiento).toLocaleDateString('es-ES') %></p>
   <p><strong>Documento:</strong> <%= dato.documento %></p>
   <p><strong>Domicilio:</strong> <%= dato.domicilio %></p>
