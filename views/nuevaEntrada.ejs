@@ -17,17 +17,22 @@
   <h1>Nueva entrada</h1>
   <br>
   <div class="agregarPaciente">
-  <form action="/pacientes/add" method="post" autocomplete="off"
-  >
+
+
+  <form action="/pacientes/add" method="post" autocomplete="off">
     <label for="px">Paciente:</label>
     <select id="px" name="px" required>
-
+      <% resultados.forEach(paciente => { %>
+        <option value="<%= paciente.id %>">
+          <%= paciente.nombreyapellido %>
+        </option>
+      <% }); %>
     </select>
     
 
 
-    <label id="fecha" for="fecha">Fecha de consulta:</label>
-    <input type="date">
+    <label for="fecha" >Fecha de consulta:</label>
+    <input type="date" id="fecha" name="fecha">
 
     <br>
 
@@ -35,7 +40,7 @@
 
 
     <label for="comentario">Comentario:</label>
-    <input type="text" id="comentario" name="comentario" required>
+    <textarea id="comentario" name="comentario" required></textarea>
     <br>
 
     

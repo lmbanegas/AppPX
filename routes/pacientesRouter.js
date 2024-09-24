@@ -17,6 +17,8 @@ router.get('/detalle/:id', datosController.detail);
 //Detalle de HC Paciente
 router.get('/hc/:id', datosController.hc);
 
+//Agregar editar HC
+
 //Añadir entrada de HC
 router.get('/add', datosController.nuevaEntrada);
 router.post('/add', datosController.nuevaEntradaPost);
@@ -29,9 +31,6 @@ router.post('/nuevo-paciente', datosController.nuevoPacientePost);
 
 router.get('/edit/:id', datosController.detalleEditarPaciente);
 router.post('/edit/:id', datosController.editarPaciente);
-
-//Borrar paciente
-router.delete('/edit/:id/delete', datosController.pacienteDelete);
 
 
 module.exports = router;

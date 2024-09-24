@@ -20,58 +20,75 @@
 
     <div id="pdfContent">
 
-      <h1>Historia Clínica de paciente:</h1>
-
-      <div class="datosPersonales" id="datosPersonales">
-        <p><b>Nombre y Apellido:
-
-        <div id="datos"></b>Lucas Banegas</p></div>
-
-
-        <p><b>DNI:</b> 37.783.367</p>
-        <p><b>Domicilio:</b> Av Belgrano 3020</p>
-        <p><b>Dato1:</b> Dato extra</p>
-        <p><b>Dato2:</b> Dato extra </p>
-
-
-      </div>
-
       <div class="detalleHC">
-        <p><b>Fecha: 04/09/2024</b></p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
-          commodi doloremque, quasi ex, odio,
-          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
-        <img src="/firma.png" alt="Firma" width="15%">
+        <h1>Historia Clínica de paciente:</h1>
+        <h2>Datos Personales</h2>
+        <br>
+        <p><strong>Nombre y apellido:</strong>
+          <%= dato.nombreyapellido %>
+        </p>
+        <p><strong>Fecha de Nacimiento:</strong>
+          <%= new Date(dato.fechanacimiento).toLocaleDateString('es-ES') %>
+        </p>
+        <p><strong>Documento:</strong>
+          <%= dato.documento %>
+        </p>
+        <p><strong>Domicilio:</strong>
+          <%= dato.domicilio %>
+        </p>
+        <p><strong>Núcleo Familiar:</strong>
+          <%= dato.nucleofamiliar %>
+        </p>
+        <p><strong>Teléfono:</strong>
+          <%= dato.telefono %>
+        </p>
+        <p><strong>Teléfono Alternativo:</strong>
+          <%= dato.telefonoalternativo %>
+        </p>
+        <p><strong>Antecedentes Familiares:</strong>
+          <%= dato.antecedentesfamiliares %>
+        </p>
+        <p><strong>Antecedentes Personales:</strong>
+          <%= dato.antecedentespersonales %>
+        </p>
+        <p><strong>Motivo de Consulta:</strong>
+          <%= dato.motivoconsulta %>
+        </p>
+        <p><strong>Obra Social:</strong>
+          <%= dato.obrasocial %>
+        </p>
       </div>
 
-      <div class="detalleHC">
-        <p><b>Fecha: 04/09/2024</b></p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
-          commodi doloremque, quasi ex, odio,
-          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
-        <img src="/firma.png" alt="Firma" width="15%">
-      </div>
+      <% datoHC.forEach(function(entrada) { %>
+        <div class="detalleHC">
+          <br>
 
-      <div class="detalleHC">
-        <p><b>Fecha: 04/09/2024</b></p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
-          commodi doloremque, quasi ex, odio,
-          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
-        <img src="/firma.png" alt="Firma" width="15%">
-      </div>
+          <p style="display:none">
+            <%= entrada.id %>
+          </p>
 
-      <div class="detalleHC">
-        <p><b>Fecha: 04/09/2024</b></p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam soluta officiis labore eaque accusantium
-          commodi doloremque, quasi ex, odio,
-          omnis explicabo ipsam laudantium vitae. Mollitia dolorum sunt velit praesentium doloribus.</p>
-        <img src="/firma.png" alt="Firma" width="15%">
-      </div>
+          <br><br>
+          <p><b>Fecha: <%= new Date(entrada.fecha).toLocaleDateString('es-ES', { day: '2-digit' , month: '2-digit' ,
+                year: 'numeric' }) %>
+            </b></p>
+          <p>
+            <%= entrada.comentario %>
+          </p>
+          <br>
+          <img src="/firma.png" alt="Firma" width="15%">
+          <br>
+          <button class="modificarEntrada" data-html2canvas-ignore="true"><a href="/pacientes/edit/<%= dato.id %>" class="modificarEntrada">Modificar</a></button>
+
+
+        </div>
+
+        <% }); %>
+
+    </div>
 
     </div>
 
 
-    
     <button class="print" onclick="imprimirPDF()">Exportar PDF</button>
 
 
@@ -86,8 +103,6 @@
 
 
     const element = document.getElementById("pdfContent");
-    
-    console.log(document.getElementById("nombre"));
 
 
     html2pdf(element, {

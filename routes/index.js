@@ -7,7 +7,7 @@ const loginValidation = require('../middlewares/loginValidation');
 
 
 
-router.get('/login', loginValidation, controller.loginGet);
+router.get('/login', loginValidation, controller.login);
 router.post('/login',loginValidation, controller.loginPost);
 
 router.use(userValidation);

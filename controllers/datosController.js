@@ -22,28 +22,9 @@ const pool = new Pool({
 });
 // ------- ***** VS ***** ------- /
 
-const home = async (req, res) => {
-  try {
-    console.log('Iniciando consulta...');
-    const resultado = "SELECT * FROM public.pacientes";
-    const resultados = await pool.query(resultado);
-    
-    console.log('Consulta exitosa. Resultados:', resultados.rows);
-    
-    res.render('index', {
-      resultados: resultados.rows
-    });
-  } catch (error) {
-    console.error('Error de consulta222:', error.message);
-    res.status(500).send('Error de consulta22');
-  }
-};
-
-
-const loginGet = async (req, res) => {
+const login = async (req, res) => {
   res.render('login')
 };
-
 
 const loginPost = async (req, res) => {
   try {
@@ -71,9 +52,8 @@ const loginPost = async (req, res) => {
 
 const allpacientes = async (req, res) => {
     try {
-      const query = 'SELECT * FROM public.px'; 
+      const query = 'SELECT * FROM public.px order by nombreyapellido'; 
       const result = await pool.query(query);
-
       res.render('pacientes', { pacientes: result.rows });
 
 
@@ -87,7 +67,6 @@ const allpacientes = async (req, res) => {
 const detail = async (req, res) => {
   try {
     const id = req.params.id;
-
     const query = 'SELECT * FROM public.px WHERE id = $1'
     const result = await pool.query(query, [id]);
 
@@ -98,7 +77,6 @@ const detail = async (req, res) => {
     } else {
       res.status(404).send('Dato no encontrado');
       res.render('detallePaciente');
-
     }
 
 
@@ -109,60 +87,47 @@ const detail = async (req, res) => {
 };
 
 const hc = async (req, res) => {
+  try {
+    const id = req.params.id;
 
-    try {
-      const id = req.params.id;
-  
-      const query = 'SELECT * FROM public.historiapx WHERE id = $1'
-      const result = await pool.query(query, [id]);
-  
-  
-      // Verifica si se encontró un resultado
-      if (result.rows.length > 0) {
-        const dato = result.rows[0];
-        res.render('historiaClinica', { dato });
-      } else {
-        // Si no se encuentra el dato, puedes manejarlo como desees
-        res.status(404).send('Historia clínica no encontrada');
-      }
-  
-    res.render('historiaClinica');
+    //Requiero datos personales
+    const query = 'SELECT * FROM public.px WHERE id = $1' 
+    const result = await pool.query(query, [id]);
 
 
+    //Requiero historia
+    const queryHc = 'SELECT * FROM public.historiapx WHERE idPaciente = $1  ORDER BY fecha';
+    const resultHc = await pool.query(queryHc, [id]);
+
+    if (result.rows.length > 0 & resultHc.rows.length > 0) {
+      const dato = result.rows[0];
+      const datoHC = resultHc.rows;
+      
+      console.log(datoHC)
+      res.render('historiaClinica', { dato: dato, datoHC:datoHC  });
+    } else {
+      res.status(404).send('Historia clínica no encontrada');
+    }
   } catch (error) {
     console.error('Error de consulta:', error.message);
     res.status(500).send('Error de consulta');
-    res.render('historiaClinica');
-
   }
 };
 
+
 const nuevaEntrada = async (req, res) => {
+  const resultado = "SELECT * FROM public.px";
+  const resultados = await pool.query(resultado);
+  res.render('nuevaEntrada', {resultados: resultados.rows});
 
-  // const resultado = "SELECT * FROM public.pacientes";
-  // const resultados = await pool.query(resultado);
-  
-  // console.log('Consulta exitosa. Resultados:', resultados.rows);
-      
-
-  // res.render('nuevaEntrada', {resultados: resultados.rows});
-
-
-  // const resultado = "SELECT * FROM public.pacientes";
-  // const resultados = await pool.query(resultado);
-  
-  // console.log('Consulta exitosa. Resultados:', resultados.rows);
-      
-
-  res.render('nuevaEntrada');
 };
 
 const nuevaEntradaPost = async (req, res) => {
   try {
-    // const { px, fecha, comentario } = req.body;
+    const { px, fecha, comentario } = req.body;
 
-    // const query = 'INSERT INTO public.historiaPX (idpaciente, fecha, comentario) VALUES ($1, $2, $3) RETURNING *';
-    // const result = await pool.query(query, [px, fecha, comentario]);
+    const query = 'INSERT INTO public.historiapx (idpaciente, fecha, comentario) VALUES ($1, $2, $3) RETURNING *';
+    const result = await pool.query(query, [px, fecha, comentario]);
 
     res.redirect(`/pacientes/`);
   } catch (error) {
@@ -190,43 +155,64 @@ const detalleEditarPaciente = async (req, res) => {
 
 
 const editarPaciente = async (req, res) => {
-  try {
-    const id = req.params.id;
-    let { name, price, aumento, category } = req.body;
 
-    if (aumento > 0) {
-      price = (price * (1 + aumento / 100));
-    }
+    try {
+      const {
+        nombreyapellido,
+        fechaNacimiento,
+        documento,
+        domicilio,
+        nucleoFamiliar,
+        telefono,
+        telefonoAlternativo,
+        antecedentesFamiliares,
+        antecedentesPersonales,
+        motivoConsulta,
+        obraSocial,
+        id,
+      } = req.body;
 
-    price = parseFloat(price).toFixed(2);
+  
+      const query = `
+        UPDATE public.px SET 
+        nombreyapellido = $1, 
+        fechanacimiento = $2, 
+        documento = $3, 
+        domicilio = $4, 
+        nucleofamiliar = $5, 
+        telefono = $6, 
+        telefonoalternativo = $7, 
+        antecedentesfamiliares = $8, 
+        antecedentespersonales = $9, 
+        motivoconsulta = $10, 
+        obrasocial = $11
+        WHERE id = $12
+        RETURNING *`;
+  
+      const values = [
+        nombreyapellido,
+        fechaNacimiento,
+        documento,
+        domicilio,
+        nucleoFamiliar,
+        telefono,
+        telefonoAlternativo,
+        antecedentesFamiliares,
+        antecedentesPersonales,
+        motivoConsulta,
+        obraSocial,
+        id,
+      ];
+  
+      const result = await pool.query(query, values);
+  
+      
 
-    // Modificar la consulta para incluir la categoría
-    const query = 'UPDATE public.articulos SET name = $1, price = $2, category = $3 WHERE id = $4 RETURNING *';
-    const result = await pool.query(query, [name, price, category, id]);
 
     res.redirect(`/pacientes/`);
   } catch (error) {
     console.error('Error al editar datos del paciente:', error.message);
     res.status(500).send('Error al editar datos del  paciente');
-  }
-};
-
-const pacienteDelete = async (req, res) => {
-  try {
-    const id = req.params.id;
-
-    const query = 'DELETE FROM public.articulos WHERE id = $1';
-
-
-    await pool.query(query, [id]);
-
-    console.log('Query:', query);
-
-
-    res.redirect(`/`);
-  } catch (error) {
-    console.error('Error:', error.message);
-    res.status(500).send('Error');
   }
 };
 
@@ -239,8 +225,7 @@ const nuevoPaciente = (req, res) => {
 const nuevoPacientePost = async (req, res) => {
   try {
     const {
-      nombre,
-      apellido,
+      nombreyapellido,
       fechaNacimiento,
       documento,
       domicilio,
@@ -255,13 +240,12 @@ const nuevoPacientePost = async (req, res) => {
 
     const query = `
       INSERT INTO px 
-      (nombre, apellido, fechanacimiento, documento, domicilio, nucleofamiliar, telefono, telefonoalternativo, antecedentesfamiliares, antecedentespersonales, motivoconsulta, obrasocial) 
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) 
+      (nombreyapellido, fechanacimiento, documento, domicilio, nucleofamiliar, telefono, telefonoalternativo, antecedentesfamiliares, antecedentespersonales, motivoconsulta, obrasocial) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) 
       RETURNING *`;
 
     const values = [
-      nombre,
-      apellido,
+      nombreyapellido,
       fechaNacimiento,
       documento,
       domicilio,
@@ -277,6 +261,7 @@ const nuevoPacientePost = async (req, res) => {
     const result = await pool.query(query, values);
 
     res.redirect(`/pacientes/`);
+
   } catch (error) {
     console.error('Error al añadir nuevo paciente:', error.message);
     res.status(500).send('Error al añadir nuevo paciente');
@@ -286,4 +271,4 @@ const nuevoPacientePost = async (req, res) => {
 
 
 
-module.exports = {home,loginGet, loginPost, allpacientes, detail, hc, nuevaEntrada, nuevaEntradaPost, detalleEditarPaciente, editarPaciente, pacienteDelete, nuevoPaciente, nuevoPacientePost };
+module.exports = {login, loginPost, allpacientes, detail, hc, nuevaEntrada, nuevaEntradaPost, detalleEditarPaciente, editarPaciente, nuevoPaciente, nuevoPacientePost };
