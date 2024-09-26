@@ -116,14 +116,16 @@ const hc = async (req, res) => {
 
 
 const nuevaEntrada = async (req, res) => {
-  const resultado = "SELECT * FROM public.px";
+  const resultado = "SELECT historiapx.IDPACIENTE, historiapx.fecha, px.nombreyapellido FROM historiapx INNER JOIN px ON px.id = historiapx.idpaciente WHERE historiapx.fecha = (SELECT MAX(h.fecha)    FROM historiapx h    WHERE h.idpaciente = historiapx.idpaciente);";
   const resultados = await pool.query(resultado);
+  console.log(resultados)
   res.render('nuevaEntrada', {resultados: resultados.rows});
 
 };
 
 const nuevaEntradaPost = async (req, res) => {
   try {
+    console.log(req.body)
     const { px, fecha, comentario } = req.body;
 
     const query = 'INSERT INTO public.historiapx (idpaciente, fecha, comentario) VALUES ($1, $2, $3) RETURNING *';

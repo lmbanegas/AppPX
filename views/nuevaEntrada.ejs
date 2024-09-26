@@ -23,15 +23,17 @@
     <label for="px">Paciente:</label>
     <select id="px" name="px" required>
       <% resultados.forEach(paciente => { %>
-        <option value="<%= paciente.id %>">
-          <%= paciente.nombreyapellido %>
+        <option value="<%= paciente.idpaciente %>">
+          <%= paciente.nombreyapellido %> |  <%= new Date(paciente.fecha).toLocaleDateString('es-ES', { day: '2-digit' , month: '2-digit' ,
+          year: '2-digit' }) %>
         </option>
       <% }); %>
+
     </select>
     
 
 
-    <label for="fecha" >Fecha de consulta:</label>
+    <label for="fecha" >Fecha de consulta:         </label>
     <input type="date" id="fecha" name="fecha">
 
     <br>
@@ -39,7 +41,7 @@
 
 
 
-    <label for="comentario">Comentario:</label>
+    <label for="comentario">Comentario: --- </label>
     <textarea id="comentario" name="comentario" required></textarea>
     <br>
 
