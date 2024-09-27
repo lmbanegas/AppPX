@@ -1,5 +1,6 @@
 const { Pool } = require('pg');
 const { body, validationResult } = require('express-validator');
+const bcrypt = require('bcrypt');
 
 
 
@@ -37,21 +38,22 @@ const login = async (req, res) => {
 };
 
 
+const username = 'liclg';
+const passwordHash = '$2y$10$IDUMENJpVGqSHVKl1T5LbeEdEALei5g0f4/CdI1ibo8TveV64dbTm'; 
+
 const loginPost = async (req, res) => {
   try {
     let errors = validationResult(req);
-    const username = req.body.username;
-    const password = req.body.password;
+    const enteredUsername = req.body.username;
+    const enteredPassword = req.body.password;
 
-    // Verificar las credenciales en el servidor
-    if (username === 'liclg' && password === 'liclg') {
-      res.cookie('username', username, { maxAge: 24 * 60 * 60 * 1000 });
-      req.session.user = username;
+    // Verificar si el usuario ingresado coincide con el único usuario
+    if (enteredUsername === username && await bcrypt.compare(enteredPassword, passwordHash)) {
+      res.cookie('username', enteredUsername, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true, secure: true });
+      req.session.user = enteredUsername;
       res.redirect('/');
     } else {
       errors.errors.push({ param: 'general', msg: 'Usuario y/o contraseña incorrectos' });
-      console.log(errors)
-
       return res.render('login', { errors });
     }
   } catch (error) {
