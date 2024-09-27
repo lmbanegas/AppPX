@@ -54,6 +54,9 @@ HbpqdEgJuFk0xB1B5L3qjOBkHNEJNpRdrYMP6iKhEatmdmYHmQ==
 // ------- ***** VS ***** ------- /
 
 const login = async (req, res) => {
+       const query = 'SELECT * FROM public.px'; 
+      const result = await pool.query(query);
+    console.log(result);
   res.render('login')
 };
 
