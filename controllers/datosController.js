@@ -5,21 +5,21 @@ const { body, validationResult } = require('express-validator');
 
 // ------- ***** RENDER ***** ------- /
 
-// const pool = new Pool({
-//   connectionString: 'postgresql://datatabasepx_user:aQ03haJ4FmjHl4yVQDwAp13zrb8PTrPN@dpg-crk81d3qf0us73df2u8g-a/datatabasepx',
-// });
+/const pool = new Pool({
+   connectionString: 'postgres://avnadmin:AVNS_aG3a1KMG_5SbZLhqNOh@pg-192c8d92-lbanegas93-3975.c.aivencloud.com:20362/defaultdb?sslmode=require',
+ });
 // ------- ***** RENDER ***** ------- /
 
 
 // ------- ***** VS ***** ------- /
-const connectionString = 'postgresql://datatabasepx_user:aQ03haJ4FmjHl4yVQDwAp13zrb8PTrPN@dpg-crk81d3qf0us73df2u8g-a.oregon-postgres.render.com/datatabasepx';
+//const connectionString = 'postgresql://datatabasepx_user:aQ03haJ4FmjHl4yVQDwAp13zrb8PTrPN@dpg-crk81d3qf0us73df2u8g-a.oregon-postgres.render.com/datatabasepx';
 
-const pool = new Pool({
-  connectionString: connectionString,
-  ssl: {
-    rejectUnauthorized: false // Importante para conexiones remotas a bases de datos en servicios de la nube como Render
-  }
-});
+//const pool = new Pool({
+  //connectionString: connectionString,
+ // ssl: {
+//    rejectUnauthorized: false // Importante para conexiones remotas a bases de datos en servicios de la nube como Render
+//  }
+//});
 // ------- ***** VS ***** ------- /
 
 const login = async (req, res) => {
