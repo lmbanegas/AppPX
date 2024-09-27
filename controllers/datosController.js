@@ -5,9 +5,40 @@ const { body, validationResult } = require('express-validator');
 
 // ------- ***** RENDER ***** ------- /
 
+
+
 const pool = new Pool({
-   connectionString: 'postgres://avnadmin:AVNS_aG3a1KMG_5SbZLhqNOh@pg-192c8d92-lbanegas93-3975.c.aivencloud.com:20362/defaultdb?sslmode=require',
- });
+    connectionString: 'postgres://avnadmin:AVNS_aG3a1KMG_5SbZLhqNOh@pg-192c8d92-lbanegas93-3975.c.aivencloud.com:20362/defaultdb?sslmode=require',
+    ssl: {
+        ca: `-----BEGIN CERTIFICATE-----
+MIIEQTCCAqmgAwIBAgIUdYoBT2nkHrZdqEVhGyCpgeLJdEIwDQYJKoZIhvcNAQEM
+BQAwOjE4MDYGA1UEAwwvN2FiN2QzNmUtZGQwMS00NTg2LWJhMDItN2EzNDNjMDQ4
+Mzg4IFByb2plY3QgQ0EwHhcNMjQwOTEyMTQyNjE0WhcNMzQwOTEwMTQyNjE0WjA6
+MTgwNgYDVQQDDC83YWI3ZDM2ZS1kZDAxLTQ1ODYtYmEwMi03YTM0M2MwNDgzODIg
+UHJvamVjdCBDQTCCAaIwDQYJKoZIhvcNAQEBBQADggGPADCCAYoCggGBANJz4DdU
+nnFnGy3FAJhpIFmYQTk85LlZ8G3HlPwa0BNfhYLazHoH9fvqMWUz41GHT+GaDX8D
+MSZxl3Ag4q/2mLOFdCegy6zvwAz592n4pjKOLZQADXJYJy1LfMu24hDLaaEW4xup
+KNCHikrcleUkgQRrYJSQRuLCvyOCPdb69uypQFnkS+AoeRCA2WIMLHGQtqMgoPlK
+Rb3AWWyHUnmTQIxRhY7RF9/ueVEfvPS3A9wH6Q3ZIIzrxa5tL13c2je3SI2NUrSN
+N6eV3H/3D48v4veU1rssSI+/kGFmGbheviZVbRXwNueeDd+MQD5Og1+MutSeVeR9
+yRlMgE6j+7MQOSd46IvCWfhkzEMRod591qIGKNvGNOiibFQTx6qxSzK+BNXOjE1d
+e07/vZzLar+6J+/eHxlGnHl3RMxWbYOdwgm54DVVAAFbxRK9eQ2o+DMX8RgTLidl
+uIezrTwfoVwrHlRIui3uJ/EESFoEQ+SwPm+Tdaa4M2beihc0Xs0lXLjvowIDAQAB
+oz8wPTAdBgNVHQ4EFgQUDk8Sms3ek0GHXj3u4PGwv1+Wk88wDwYDVR0TBAgwBgEB
+/wIBADALBgNVHQ8EBAMCAQYwDQYJKoZIhvcNAQEMBQADggGBAKNr3HFABa5ugZzD
+XWIacz41L/xdA8UBFONMIZXAzFgRWCEN4hPFhkVxpqvaSDxBWtmmT5gyRvBNtGq5
+FbMco4bvXKGeaXMjScY8ZhqMaVicIeuUACHZbcRfb+jo7MM9FX5hLlwM5FkOB8Hj
+r5r7YaFP3Jz6f7AaXVbgNjl/3XP2scPxFlyvm4GgAIIS1GTrTYWJi/l19vf1TwGD
+p9xLiFE3LpLbB2xU3ckAOJ1QbNrGlSLOGGePtf2VDoa0pcFMyOHaWCP/AHpEG0c6
+gqFOEs8gHFhQjA8Zg5RKWlYdmskf//7i05Ytnw6+8Su09F/1GigWM2c2JlWnNjqu
+AgDX+2hchpvabBHVVdm1DLtLTC+fptuuXb85Z7QLLd1z7d3OTQAdTADbJn7miV0h
+hG+p21+J9VzTLrscrwxPdPgbS3zD3/BSlrt2zTnQzh3awepBQ1g1LrxPsJOzcuSz
+HbpqdEgJuFk0xB1B5L3qjOBkHNEJNpRdrYMP6iKhEatmdmYHmQ==
+-----END CERTIFICATE-----`,
+        rejectUnauthorized: true // Asegúrate de que esté configurado en true
+    }
+});
+
 // ------- ***** RENDER ***** ------- /
 
 
