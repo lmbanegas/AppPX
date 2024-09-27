@@ -8,12 +8,8 @@ const { body, validationResult } = require('express-validator');
 
 
 const pool = new Pool({
-    connectionString: 'postgres://avnadmin:AVNS_aG3a1KMG_5SbZLhqNOh@pg-192c8d92-lbanegas93-3975.c.aivencloud.com:20362/defaultdb?sslmode=require',
-    ssl: {
-        rejectUnauthorized: true // Cambiado a false
-    }
+    connectionString: 'postgres://avnadmin:AVNS_aG3a1KMG_5SbZLhqNOh@pg-192c8d92-lbanegas93-3975.c.aivencloud.com:20362/defaultdb?sslmode=no-verify',
 });
-
 // ------- ***** RENDER ***** ------- /
 
 
