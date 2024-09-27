@@ -54,11 +54,17 @@ HbpqdEgJuFk0xB1B5L3qjOBkHNEJNpRdrYMP6iKhEatmdmYHmQ==
 // ------- ***** VS ***** ------- /
 
 const login = async (req, res) => {
-       const query = 'SELECT * FROM public.px'; 
-      const result = await pool.query(query);
+  try {
+    const query = 'SELECT * FROM public.px'; 
+    const result = await pool.query(query);
     console.log(result);
-  res.render('login')
+    res.render('login', { data: result.rows }); // Pasar datos a la vista si es necesario
+  } catch (error) {
+    console.error('Error al ejecutar la consulta:', error.message);
+    res.status(500).send('Error en la base de datos');
+  }
 };
+
 
 const loginPost = async (req, res) => {
   try {
